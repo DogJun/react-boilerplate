@@ -31,18 +31,51 @@ const baseConfig = {
         ]
       },
       {
-        test: /\.css$/,
+        test: /\.less$/,
+        exclude: /node_modules/,
         use: [
-          MiniCssExtractPlugin.loader, 
+          !isProd ? 'style-loader' : MiniCssExtractPlugin.loader, 
           {
             loader: 'css-loader',
             options: {
               modules: true,
               localIdentName: '[name]_[local]_[hash:base64:5]'
             }
+          },
+          {
+            loader: 'less-loader'
+          }
+        ]
+      },
+      // antd样式处理
+      {
+        test: /\.css$/,
+        exclude: /src/,
+        use: [
+          { 
+            loader: "style-loader"
+          },
+          {
+            loader: "css-loader",
+            options:{
+              importLoaders: 1
+            }
           }
         ]
       }
+      // {
+      //   test: /\.css$/,
+      //   use: [
+      //     MiniCssExtractPlugin.loader, 
+      //     {
+      //       loader: 'css-loader',
+      //       options: {
+      //         modules: true,
+      //         localIdentName: '[name]_[local]_[hash:base64:5]'
+      //       }
+      //     }
+      //   ]
+      // }
     ]
   },
   plugins: [
