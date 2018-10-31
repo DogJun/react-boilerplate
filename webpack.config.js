@@ -81,18 +81,21 @@ const baseConfig = {
         ]
       },
       {
-        test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 8192, // 单位是 Byte，当文件小于 8KB 时作为 DataURL 处理
-              outputPath: 'assets/images/',
-              name: isProd ? '[name].[hash:8].[ext]' : '[name].[ext]',
-            },
-          },
-        ],
-      }
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 8192, // 单位是 Byte，当文件小于 8KB 时作为 DataURL 处理
+          name: isProd ? 'assets/images/[name].[hash:8].[ext]' : 'assets/images/[name].[ext]'
+        }
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 8192,
+          name: isProd ? 'assets/fonts/[name].[hash:8].[ext]' : 'assets/fonts/[name].[ext]'
+        }
+      },
     ]
   },
   //  提取公共代码
