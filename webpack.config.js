@@ -55,15 +55,24 @@ const baseConfig = {
             loader: 'css-loader',
             options: {
               modules: true,
-              localIdentName: '[name]_[local]_[hash:base64:5]'
+              localIdentName: '[name]_[local]_[hash:base64:5]',
+              minimize: true
             }
           },
           {
             loader: "postcss-loader",
             options: {
-              plugins: [
-                require("autoprefixer")
-              ]
+              plugins: () => ([
+                require('postcss-flexbugs-fixes'),
+                require('autoprefixer')({
+                  browsers: [
+                    '>1% in CN',
+                    'last 4 versions',
+                    'Firefox ESR',
+                    'ie >= 8'
+                  ]
+                })
+              ])
             }
           },
           {

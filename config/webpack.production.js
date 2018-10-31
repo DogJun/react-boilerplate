@@ -1,3 +1,4 @@
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 // const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
@@ -10,6 +11,14 @@ module.exports = {
     publicPath: './'
   },
   plugins: [
+    new OptimizeCssAssetsPlugin({
+      assetNameRegExp: /\.css\.*(?!.*map)/g,
+      cssProcessor: require('cssnano'),
+      cssProcessorPluginOptions: {
+        preset: ['default', { discardComments: { removeAll: true } }],
+      },
+      canPrint: true
+    }),
     new ProgressBarPlugin(),
     new WebpackBuildNotifierPlugin({
       title: "My Project Webpack Build",
