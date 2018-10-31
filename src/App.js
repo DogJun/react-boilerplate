@@ -1,23 +1,13 @@
-import React, { Component } from 'react'
-import { Provider } from 'react-redux'
-import { BrowserRouter, Route } from 'react-router-dom'
-import store from './store'
-import Header from './common/Header'
-import Home from './pages/Home'
+import React, { Fragment } from 'react'
+import { renderRoutes } from 'react-router-config'
+import Header from 'widgets/Header'
+import 'styles/index.less'
 
-class App extends Component {
-  render() {
-    return (
-    	<Provider store={store}>
-      	<BrowserRouter>
-      		<div>
-            <Header />
-      			<Route path='/' exact component={Home}></Route>
-      		</div>
-      	</BrowserRouter>
-      </Provider>
-    )
-  }
-}
+const App = (props) => (
+  <Fragment>
+    <Header/>
+    {renderRoutes(props.route.routes)}
+  </Fragment>
+)
 
 export default App

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { actionCreators } from './store';
+import { actionCreators } from './store'
 
 class Header extends Component {
   render () {
@@ -20,7 +20,6 @@ const mapStateToPorps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   changeName () {
-    console.log('111')
     dispatch(actionCreators.getName())
   }
 })
