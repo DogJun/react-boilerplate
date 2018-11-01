@@ -62,6 +62,7 @@ const baseConfig = {
           {
             loader: "postcss-loader",
             options: {
+              ident: 'postcss',
               plugins: () => ([
                 require('postcss-flexbugs-fixes'),
                 require('autoprefixer')({
@@ -71,7 +72,9 @@ const baseConfig = {
                     'Firefox ESR',
                     'ie >= 8'
                   ]
-                })
+                }),
+                require('postcss-px2rem')({remUnit: 75}),
+                require('cssnano')()
               ])
             }
           },

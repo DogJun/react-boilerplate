@@ -11,14 +11,14 @@ module.exports = {
     publicPath: './'
   },
   plugins: [
-    new OptimizeCssAssetsPlugin({
-      assetNameRegExp: /\.css\.*(?!.*map)/g,
-      cssProcessor: require('cssnano'),
-      cssProcessorPluginOptions: {
-        preset: ['default', { discardComments: { removeAll: true } }],
-      },
-      canPrint: true
-    }),
+    // new OptimizeCssAssetsPlugin({
+    //   assetNameRegExp: /\.css\.*(?!.*map)/g,
+    //   cssProcessor: require('cssnano'),
+    //   cssProcessorPluginOptions: {
+    //     preset: ['default', { discardComments: { removeAll: true } }],
+    //   },
+    //   canPrint: true
+    // }),
     new ProgressBarPlugin(),
     new WebpackBuildNotifierPlugin({
       title: "My Project Webpack Build",

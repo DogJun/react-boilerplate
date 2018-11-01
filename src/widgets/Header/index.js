@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { actionCreators } from './store'
+import styles from './index.less'
 
 class Header extends Component {
   render () {
@@ -8,7 +9,7 @@ class Header extends Component {
     return (
       <Fragment>
         <div>hello, {name}</div>
-        <button onClick={changeName}>点击</button>
+        <button className={styles.btn} onClick={changeName}>点击</button>
       </Fragment>
     )
   }
